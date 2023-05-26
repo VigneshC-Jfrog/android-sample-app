@@ -13,11 +13,6 @@ steps:
 - task: JfrogCliV2@1
   inputs:
     jfrogPlatformConnection: 'art'
-    command: 'jf gradle-config  --repo-deploy=sri-dines-gradle-dev  --repo-resolve=sri-dines-gradle-dev --use-wrapper=true'
-- task: CmdLine@2
-  inputs:
-    script: 'ls -lart *'
-- task: JfrogCliV2@1
-  inputs:
-    jfrogPlatformConnection: 'art'
-    command: 'jf gradle clean artifactoryPublish -b ./build.gradle --build-name sample-android-1 --build-number 1.0.0'
+    command: |
+      jf gradle-config  --repo-deploy=sri-dines-gradle-dev  --repo-resolve=sri-dines-gradle-dev --use-wrapper=true
+      jf gradle clean artifactoryPublish -b ./build.gradle --build-name sample-android-1 --build-number 1.0.0
